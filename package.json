@@ -1,0 +1,12 @@
+{
+  "name": "eradealerotomotif-n8n",
+  "version": "1.0.0",
+  "description": "XPENG Era Dealer Otomotif n8n project",
+  "main": "index.js",
+  "scripts": {
+    "start": "n8n"
+  },
+  "dependencies": {
+    "n8n": "^2.1.2"
+  }
+}
