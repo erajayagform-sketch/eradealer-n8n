@@ -1,13 +1,36 @@
-# Deploy n8n on Render
+# Exported from Render
+version: "1"
+services:
+  - type: web
+    name: n8n-service
+    env: docker
+    plan: free
+    autoDeploy: true
+    dockerfilePath: Dockerfile
+    envVars:
+      - key: N8N_BASIC_AUTH_ACTIVE
+        value: "true"
+      - key: N8N_BASIC_AUTH_USER
+        value: "admin"
+      - key: N8N_BASIC_AUTH_PASSWORD
+        value: "rahasia123"
+      - key: N8N_HOST
+        value: eradealer-n8n.onrender.com
+      - key: N8N_PORT
+        value: "443"
+      - key: DB_TYPE
+        value: postgresdb
+      - key: DB_POSTGRESDB_DATABASE
+        value: n8n
+      - key: DB_POSTGRESDB_USER
+        value: render
+      - key: DB_POSTGRESDB_PASSWORD
+        value: ${DB_POSTGRESDB_PASSWORD}
+      - key: DB_POSTGRESDB_HOST
+        value: ${DB_POSTGRESDB_HOST}
+      - key: DB_POSTGRESDB_PORT
+        value: ${DB_POSTGRESDB_PORT}
 
-> [!IMPORTANT]
-> **View full deployment instructions in the [**Render docs**](https://render.com/docs/deploy-n8n).**
-
-This template defines a [`render.yaml`](https://github.com/render-examples/n8n/blob/main/render.yaml) file you can use to deploy [n8n](https://n8n.io/) on Render. Click **Use this template** in the upper right to copy this template into your account as a new repo.
-
-The `render.yaml` file defines the following resources:
-
-- A web service that pulls and runs the official n8n Docker image
-- A Render Postgres database that stores n8n data
-
-Each of the above uses a free instance type by default.
+databases:
+  - name: n8n-db
+    plan: free
